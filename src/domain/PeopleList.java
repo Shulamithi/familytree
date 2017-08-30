@@ -18,7 +18,9 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @XmlSeeAlso(Person.class)
 public class PeopleList extends ArrayList<Person>{
 
-	
+
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Constructor
 	 */
