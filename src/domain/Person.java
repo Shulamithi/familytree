@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 
 public abstract class Person {
+	
+	private String familyID;
 	private String firstName;
 	private String fatherSurname;
 	private String motherSurname;
@@ -55,6 +57,13 @@ public abstract class Person {
 	}
 	public void setPhoto(byte[] photo) {
 		this.photo = photo;
+	}
+	
+	public String getFamilyID() {
+		return familyID;
+	}
+	public void setFamilyID(String familyID) {
+		this.familyID = familyID;
 	}
 	
 }
