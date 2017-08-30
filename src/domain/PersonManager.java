@@ -52,7 +52,7 @@ public class PersonManager {
 	
 	public static void delete(String firstName) {
 		Person person = find(firstName);
-		list.remove(firstName);
+		list.remove(person);
 	}
 
 }
