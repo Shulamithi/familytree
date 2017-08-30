@@ -1,3 +1,4 @@
+package domain;
 public class User {
 
     private String username;
@@ -9,7 +10,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.emailaddress = emailaddress;
-        this.role = role;
+
     }
 
     //Setters
