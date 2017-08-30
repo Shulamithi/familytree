@@ -1,16 +1,17 @@
 package domain;
 
-import java.sql.Date;
+import java.time.LocalDate;
+
 
 public abstract class Person {
 	private String firstName;
 	private String fatherSurname;
 	private String motherSurname;
-	private Date dateOfBirth;
-	private Date dateOfDeath;
+	private LocalDate dateOfBirth;
+	private LocalDate dateOfDeath;
 	private byte[] photo;
 	
-	public Person(String firstName, String fatherSurname, String motherSurname, Date dateOfBirth, Date dateOfDeath,
+	public Person(String firstName, String fatherSurname, String motherSurname, LocalDate dateOfBirth, LocalDate dateOfDeath,
 			byte[] photo) {
 		this.firstName = firstName;
 		this.fatherSurname = fatherSurname;
@@ -37,16 +38,16 @@ public abstract class Person {
 	public void setMotherSurname(String motherSurname) {
 		this.motherSurname = motherSurname;
 	}
-	public Date getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-	public Date getDateOfDeath() {
+	public LocalDate getDateOfDeath() {
 		return dateOfDeath;
 	}
-	public void setDateOfDeath(Date dateOfDeath) {
+	public void setDateOfDeath(LocalDate dateOfDeath) {
 		this.dateOfDeath = dateOfDeath;
 	}
 	public byte[] getPhoto() {
