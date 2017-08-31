@@ -1,16 +1,24 @@
 package service;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import domain.PeopleList;
 import domain.Person;
 import domain.PersonManager;
 
@@ -59,5 +67,66 @@ public class PersonRestService {
 		
 		return response;
 	}
+	
+	/**
+	 * Update person with new info
+	 * @param person
+	 * 				the person to update
+	 * @return status code
+	 */
+	@PUT
+	public Response update(Person person) {
+		if(person == null) {
+			throw new BadRequestException();
+		}
+		PersonManager.delete(person.getFamilyID());
+		PersonManager.add(person);
+		return Response.ok().build();
+	}
+	
+	/**
+	 * Get a person
+	 * 
+	 * @param familyID
+	 * 				the person to get.
+	 * 
+	 * @return the status and person.
+	 */
+	@GET
+	@Path("{familyID}")
+	public Response get(@PathParam("familyID") String familyID) {
+		Person person = PersonManager.find(familyID);
+		if(person == null) {
+			throw new NotFoundException();
+		}
+		return Response.ok(person).build();
+		
+	}
+	
+	/**
+	 * Get all people.
+	 * @return xml or json of all people
+	 */
+	@GET
+	public Response getAll() {
+		PeopleList peopleList = PersonManager.getAllPeople();
+		// wrap the collection with GenericEntity to avoid type loss.
+		GenericEntity<List<Person>> list = new GenericEntity<List<Person>>(peopleList) {};
+		return Response.ok(list).build();
+	}
+	
+	@DELETE
+	@Path("{familyID}")
+	public Response Delete(@PathParam("familyID") String familyID) {
+		Person person = PersonManager.find(familyID);
+		if(person == null) {
+			throw new NotFoundException();
+		}
+		PersonManager.delete(familyID);
+		return Response.noContent().build();
+	}
+	
+	
+	
 
 }
