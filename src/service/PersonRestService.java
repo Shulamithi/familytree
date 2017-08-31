@@ -115,6 +115,12 @@ public class PersonRestService {
 		return Response.ok(list).build();
 	}
 	
+	/**
+	 * Delete a person
+	 * @param familyID
+	 * 					the person to delete.
+	 * @return status of operation
+	 */
 	@DELETE
 	@Path("{familyID}")
 	public Response Delete(@PathParam("familyID") String familyID) {
