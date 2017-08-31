@@ -31,6 +31,14 @@ public class PersonRestService {
 	@Context
 	private UriInfo uriInfo;
 	
+	
+	/**
+	 * Create a person and add it to the PersonManager
+	 * 
+	 * @param person
+	 * 				the new person to create
+	 * @return the status and url of the food
+	 */
 	public Response create(Person person) {
 		//create a new ResponseBuilder with a not-modified status.
 		Response response = Response.notModified().build();
