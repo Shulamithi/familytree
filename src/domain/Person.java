@@ -13,7 +13,7 @@ public abstract class Person {
 	private LocalDate dateOfDeath;
 	private byte[] photo;
 	
-	public Person(String firstName, String fatherSurname, String motherSurname, LocalDate dateOfBirth, LocalDate dateOfDeath,
+	public Person(String familyID, String firstName, String fatherSurname, String motherSurname, LocalDate dateOfBirth, LocalDate dateOfDeath,
 			byte[] photo) {
 		this.firstName = firstName;
 		this.fatherSurname = fatherSurname;
@@ -21,6 +21,7 @@ public abstract class Person {
 		this.dateOfBirth = dateOfBirth;
 		this.dateOfDeath = dateOfDeath;
 		this.photo = photo;
+		this.familyID = familyID;
 	}
 	public String getFirstName() {
 		return firstName;

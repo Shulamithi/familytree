@@ -12,9 +12,9 @@ public class PersonManager {
 	private static PeopleList list = new PeopleList();
 	
 	static {
-		list.add(new Member("Mitch", "McEwen", "H", LocalDate.of(1980, 12, 11), null, null));
-		list.add(new Member("Sara", "Smith", "Jones", LocalDate.of(1965, 9, 23), null, null));
-		list.add(new Member("John", "Bob", "Matilda", LocalDate.of(2005, 4, 1), null, null));
+		list.add(new Member("1", "Mitch", "McEwen", "H", LocalDate.of(1980, 12, 11), null, null));
+		list.add(new Member("1.1", "Sara", "Smith", "Jones", LocalDate.of(1965, 9, 23), null, null));
+		list.add(new Member("1.2", "John", "Bob", "Matilda", LocalDate.of(2005, 4, 1), null, null));
 	}
 	
 	/**
@@ -32,10 +32,10 @@ public class PersonManager {
 	 * 				 person to find
 	 * @return person or null
 	 */
-	public static Person find(String firstName) {
+	public static Person find(String familyID) {
 		final Optional<Person> foundPerson = list.stream()
-				.filter(person -> person.getFirstName()
-				.equalsIgnoreCase(firstName))
+				.filter(person -> person.getFamilyID()
+				.equals(familyID))
 				.findFirst();
 		return foundPerson.orElse(null);
 		
@@ -50,8 +50,8 @@ public class PersonManager {
 			list.add(person);
 	}
 	
-	public static void delete(String firstName) {
-		Person person = find(firstName);
+	public static void delete(String familyID) {
+		Person person = find(familyID);
 		list.remove(person);
 	}
 
