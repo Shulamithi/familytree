@@ -10,6 +10,9 @@ import javax.ws.rs.core.Application;
 import service.PersonRestService;
 import org.eclipse.persistence.jaxb.rs.MOXyJsonProvider;
 
+import domain.Member;
+import domain.Person;
+
 /**
  * Configures the runtime and registers app with jax-rs.
  * @author Mitch
@@ -31,6 +34,7 @@ public class ApplicationConfig extends Application{
 		classes = Collections.unmodifiableSet(c);
 	}
 	
+	@Override
 	public Set<Class<?>> getClasses(){
 		return classes;
 	}

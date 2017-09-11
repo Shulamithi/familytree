@@ -33,12 +33,14 @@ public class PersonManager {
 	 * @return person or null
 	 */
 	public static Person find(String familyID) {
-		final Optional<Person> foundPerson = list.stream()
-				.filter(person -> person.getFamilyID()
-				.equals(familyID))
-				.findFirst();
-		return foundPerson.orElse(null);
-		
+		Person foundPerson = null;
+		System.out.println("finding ID: " + familyID);
+		for(Person p : list) {
+			if(p.getFamilyID().equals(familyID)) {
+				foundPerson = p;
+			}
+		}
+		return foundPerson;
 	}
 	
 	/**

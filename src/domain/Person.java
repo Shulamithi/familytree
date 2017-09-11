@@ -2,7 +2,9 @@ package domain;
 
 import java.time.LocalDate;
 
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public abstract class Person {
 	
 	private String familyID;
@@ -12,6 +14,10 @@ public abstract class Person {
 	private LocalDate dateOfBirth;
 	private LocalDate dateOfDeath;
 	private byte[] photo;
+	
+	public Person() {
+		
+	}
 	
 	public Person(String familyID, String firstName, String fatherSurname, String motherSurname, LocalDate dateOfBirth, LocalDate dateOfDeath,
 			byte[] photo) {

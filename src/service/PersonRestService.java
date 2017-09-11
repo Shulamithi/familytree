@@ -3,11 +3,13 @@ package service;
 import java.net.URI;
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -31,6 +33,7 @@ import domain.PersonManager;
 @Path("/people")
 @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+@Stateless
 public class PersonRestService {
 	
 	/**
@@ -47,6 +50,7 @@ public class PersonRestService {
 	 * 				the new person to create
 	 * @return the status and url of the food
 	 */
+	@POST
 	public Response create(Person person) {
 		//create a new ResponseBuilder with a not-modified status.
 		Response response = Response.notModified().build();
@@ -97,10 +101,9 @@ public class PersonRestService {
 	public Response get(@PathParam("familyID") String familyID) {
 		Person person = PersonManager.find(familyID);
 		if(person == null) {
-			throw new NotFoundException();
+			throw new NotFoundException();	
 		}
-		return Response.ok(person).build();
-		
+		return Response.ok(person).build();	
 	}
 	
 	/**
